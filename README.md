@@ -12,4 +12,13 @@ Add your code on your folder from fisrt step and open in Vs code studio
 *Fourth
 Find symbol and run a code 
 
+-- ability -- 
+1. Mode Select
+2. Video Covert 720p >> 4K
+3. Mp.3 Convert 128kbps >> 320 kbps
+
+-- Information --
 //Only .py (python) can run this code
+//Can run only youtube url
+
+enjoy:))
