@@ -1,4 +1,4 @@
-## -- Guide Step --
+##  Guide Step 
 
 ## First
 Build your folder and name your folder and set your destination (***Only English Name) After that Download program name is "Vs code studio"
@@ -13,7 +13,7 @@ Add your code on your folder from fisrt step and open in Vs code studio
 ## Fourth
 Find symbol and run a code
 
-## -- Ability --
+##  Ability 
 
 Mode Select
 
@@ -21,7 +21,7 @@ Video Covert 720p ➔ 4K
 
 Mp.3 Convert 128kbps ➔ 320 kbps
 
-## -- Information --
+##  Information 
 
 //Only .py (python) can run this code
 
