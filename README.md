@@ -25,4 +25,4 @@ Mp.3 Convert 128kbps ➔ 320 kbps
 
 //Only .py (python) can run this code
 
-//Can use on Facebook, Instagram (Reels/Posts), TikTok, X (Twitter), Threads etc for url
+//Can use on Facebook, Instagram (Reels/Posts), TikTok, X (Twitter), Threads etc. for url
