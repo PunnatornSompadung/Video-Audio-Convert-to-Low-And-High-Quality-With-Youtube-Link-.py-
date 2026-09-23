@@ -123,20 +123,24 @@ def input_urls():
         print(Fore.RED + "\n⚠️ ไม่พบลิงก์ กรุณาวางลิงก์อย่างน้อย 1 ลิงก์...")
         input("กด Enter เพื่อลองอีกครั้ง...")
 
-def get_yt_options(mode, quality, ffmpeg_path, output_folder="downloads"):
-    """กำหนดการตั้งค่าสำหรับ yt-dlp"""
+def get_yt_options(mode, quality, ffmpeg_path):
+    # กำหนดให้โฟลเดอร์ downloads อยู่ในโฟลเดอร์เดียวกับไฟล์สคริปต์เสมอ
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    output_folder = os.path.join(base_dir, "downloads")
+
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
     ydl_opts = {
         'outtmpl': os.path.join(output_folder, '%(title)s.%(ext)s'),
+        'restrictfilenames': False, # ตั้งเป็น True หากต้องการให้ชื่อไฟล์ไม่มีเว้นวรรค/สัญลักษณ์พิเศษ
         'ffmpeg_location': ffmpeg_path,
-        'quiet': True,
-        'no_warnings': True,
+        'quiet': False,             # เปิด Log ไว้ชั่วคราวเพื่อตรวจสอบความผิดพลาด
+        'no_warnings': False,
         'progress_hooks': [
             lambda d: sys.stdout.write(
-                f"\r  {Fore.MAGENTA}└─ กำลังโหลด: {Fore.YELLOW}{d['_percent_str']} "
-                f"{Fore.BLUE}(ความเร็ว {d['_speed_str']} | เหลืออีก {d['_eta_str']}){Style.RESET_ALL}   "
+                f"\r  {Fore.MAGENTA}└─ กำลังโหลด: {Fore.YELLOW}{d.get('_percent_str', '')} "
+                f"{Fore.BLUE}(ความเร็ว {d.get('_speed_str', '')} | เหลืออีก {d.get('_eta_str', '')}){Style.RESET_ALL}   "
             ) if d['status'] == 'downloading' else None
         ],
     }
@@ -186,6 +190,7 @@ def main():
         clear_screen()
         print_banner()
         ffmpeg_path = get_ffmpeg_path()
+        
         ydl_opts = get_yt_options(mode, quality, ffmpeg_path)
 
         print(Fore.CYAN + f"\n🚀 เริ่มดาวน์โหลดทั้งหมด {len(urls)} รายการ...\n")
